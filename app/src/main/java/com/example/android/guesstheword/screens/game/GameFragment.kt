@@ -55,18 +55,24 @@ class GameFragment : Fragment() {
 
         binding.correctButton.setOnClickListener {
             viewModel.onCorrect()
-            updateWordText()
+
         }
         binding.skipButton.setOnClickListener {
             viewModel.onSkip()
-            updateWordText()
+
         }
 
         viewModel.score.observe(this, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
+        viewModel.eventGameFinish.observe(owner:this,Observer{ hasFinish->
+            if(hasFinish){
+                gameFinished()
+                viewModel.onGameFinishComplete()
+            }
+        })
 
-        updateWordText()
+
         return binding.root
 
     }
