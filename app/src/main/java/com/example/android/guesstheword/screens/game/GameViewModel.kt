@@ -15,6 +15,17 @@
  */
 
 package com.example.android.guesstheword.screens.game
+import androidx.lifecycle.ViewModel
+class  GameViewModel :ViewModel (){
+    init {
+        log.i(tag:"GameViewModel", msg:"GameViewModel Created!")
+    }
+    override fun onCleared(){
+        super.onCleared()
+        log.i(tag:"GameViewModel",msg:"GameViewModel destroyed!")
+    }
 
-// TODO (02) Create the GameViewModel class, extending ViewModel
-// TODO (03) Add init and override onCleared; Add log statements to both
+}
+
+
+
